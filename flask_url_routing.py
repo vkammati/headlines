@@ -20,6 +20,7 @@ DEFAULTS = {'publication':'bbc',
             'currency_to': 'USD'
             }
 
+
 OPEN_EXCHANGE_RATES_API_KEY = os.environ.get("OPEN_EXCHANGE_RATES_API_KEY")
 OPEN_WEATHER_API_KEY = os.environ.get("OPEN_WEATHER_API_KEY")
 
@@ -35,6 +36,10 @@ def get_value_with_fallback(key):
         return request.cookies.get(key)
 
     return DEFAULTS[key]
+
+WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&APPID="+OPEN_WEATHER_API_KEY
+
+CURRENCY_URL = "https://openexchangerates.org//api/latest.json?app_id="+OPEN_EXCHANGE_RATES_API_KEY
 
 @app.route("/")
 
